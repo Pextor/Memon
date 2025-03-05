@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>관리자 로그인</title>
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #d9d9d9;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    .container {
+      margin-top: 100px;
+      padding: 20px;
+      background-color: #222;
+      border-radius: 8px;
+      width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #444;
+      border-radius: 4px;
+      background-color: #333;
+      color: #fff;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #00bfff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0077cc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>관리자 로그인</h2>
+    <input type="text" id="adminUsername" placeholder="관리자 아이디 입력" required>
+    <input type="password" id="adminPassword" placeholder="관리자 비밀번호 입력" required>
+    <button onclick="loginAdmin()">로그인</button>
+  </div>
+
+  <script>
+    const adminUsername = "admin";  // 관리자 아이디
+    const adminPassword = "admin123";  // 관리자 비밀번호 (예시)
+
+    function loginAdmin() {
+      const enteredUsername = document.getElementById('adminUsername').value;
+      const enteredPassword = document.getElementById('adminPassword').value;
+
+      // 아이디와 비밀번호를 확인
+      if (enteredUsername === adminUsername && enteredPassword === adminPassword) {
+        localStorage.setItem('isAdmin', true);  // 관리자 상태를 로컬 스토리지에 저장
+        window.location.href = 'adminDashboard.html'; // 관리자 대시보드로 이동
+      } else {
+        alert('아이디 또는 비밀번호가 잘못되었습니다.');
+      }
+    }
+  </script>
+</body>
+</html>
