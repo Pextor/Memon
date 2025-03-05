@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시판</title>
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #d9d9d9;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      padding: 20px;
+      background-color: #222;
+    }
+    .post {
+      margin: 20px 0;
+      padding: 15px;
+      background-color: #333;
+      border-radius: 8px;
+    }
+    .comment-section {
+      margin-top: 30px;
+    }
+    .comment-box {
+      width: 100%;
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #00bfff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0077cc;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #222;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>게시판</header>
+
+  <main>
+    <div class="post">
+      <h3>게시글 #1</h3>
+      <p>여기에 게시글 내용이 들어갑니다.</p>
+    </div>
+    <div class="post">
+      <h3>게시글 #2</h3>
+      <p>두 번째 게시글 내용입니다.</p>
+    </div>
+
+    <div class="comment-section">
+      <h3>댓글</h3>
+      <div id="comment-box">
+        <input class="comment-box" type="text" id="comment" placeholder="댓글을 입력하세요" disabled>
+        <button id="comment-button" onclick="postComment()" disabled>댓글 작성</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 게시판 시스템
+  </footer>
+
+  <script>
+    // 사용자 로그인 확인
+    const username = localStorage.getItem('username');
+    if (!username) {
+      alert('회원가입이 필요합니다.');
+      window.location.href = 'register.html'; // 회원가입 페이지로 리다이렉트
+    } else {
+      document.getElementById('comment').disabled = false;
+      document.getElementById('comment-button').disabled = false;
+    }
+
+    // 댓글 작성
+    function postComment() {
+      const comment = document.getElementById('comment').value;
+      if (comment.trim() === '') {
+        alert('댓글을 입력해주세요.');
+        return;
+      }
+      alert('댓글이 작성되었습니다.');
+      document.getElementById('comment').value = ''; // 댓글 입력란 비우기
+    }
+  </script>
+</body>
+</html>
